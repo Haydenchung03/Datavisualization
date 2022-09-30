@@ -6,7 +6,9 @@ from .models import netProfit
 def main(request, id):
     # gets net income
     ls = netProfit.objects.get(id = id)
+    
     ls1 = (ls.netIncome / ls.revenue) * 100
+    
     return HttpResponse("<h1>%s<h1>" %ls1)
 
 def v1(request):

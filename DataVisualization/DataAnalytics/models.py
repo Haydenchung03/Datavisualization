@@ -9,7 +9,6 @@ class netProfit(models.Model):
     netIncome = models.FloatField()
     revenue = models.FloatField()
     
-    
     def __float__(self):
         return (self.netIncome / self.revenue) * 100
 
