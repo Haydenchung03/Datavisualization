@@ -8,10 +8,9 @@ class netProfit(models.Model):
     # Example net income
     netIncome = models.FloatField()
     revenue = models.FloatField()
-    netProfit = (netIncome / revenue) * 100
     
     def __str__(self):
-        return self.netProfit
+        return (self.netIncome / self.revenue) * 100
 
 class Item(models.Model):
     netProfitItem = models.ForeignKey(netProfit, on_delete=models.CASCADE)
