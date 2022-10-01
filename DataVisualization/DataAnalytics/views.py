@@ -9,15 +9,19 @@ def home(response):
 
 def netIncome(response, id):
     # gets net income
+    netIncome_dict = {}
     ls = netProfit.objects.get(id = id)
     
     ls1 = (ls.netIncome / ls.revenue) * 100
     
-    return render(response, "DataAnalytics/Calculations.html", {"ls1": ls1 })
+    netIncome_dict["ls1"] = ls1
+    return render(response, "DataAnalytics/Calculations.html", netIncome_dict)
 
 def customer(response, id):
     # get customer squisition cost
+    customer_dict = {}
     ls = customerAquisition.objects.get(id = id)
     ls1 = (ls.marketing / ls.newCustomer)
-    return render(response, "DataAnalytics/Calculations.html", {"ls1": ls1 })
+    customer_dict["ls1"] = ls1
+    return render(response, "DataAnalytics/Calculations.html", customer_dict)
 
