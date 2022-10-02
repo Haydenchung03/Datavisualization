@@ -7,21 +7,20 @@ def home(response):
     return render(response, "DataAnalytics/home.html", {})
 
 
-def netIncome(response, id):
+def Calculations(response, id):
     # gets net income
-    netIncome_dict = {}
-    ls = netProfit.objects.get(id = id)
+    calculations = {}
+    netCalculationGet = netProfit.objects.get(id = id)
+    netCalculationFormula = (netCalculationGet.netIncome / netCalculationGet.revenue) * 100
     
-    ls1 = (ls.netIncome / ls.revenue) * 100
-    
-    netIncome_dict["ls1"] = ls1
-    return render(response, "DataAnalytics/Calculations.html", netIncome_dict)
+    # Customer Aquisition costs
+    customerAquisitionGet = customerAquisition.objects.get(id = id)
+    customerFormula = (customerAquisitionGet.marketing / customerAquisitionGet.newCustomer)
 
-def customer(response, id):
-    # get customer squisition cost
-    customer_dict = {}
-    ls = customerAquisition.objects.get(id = id)
-    ls1 = (ls.marketing / ls.newCustomer)
-    customer_dict["ls1"] = ls1
-    return render(response, "DataAnalytics/Calculations.html", customer_dict)
+    calculations["netCalculationGet"] = netCalculationGet.netIncome,  netCalculationGet.revenue
+    calculations["netCalculationFormula"] = netCalculationFormula
+    calculations["customerAquisitionGet"] = customerAquisitionGet.marketing, customerAquisitionGet.newCustomer
+    calculations["customerFormula"] = customerFormula
+    return render(response, "DataAnalytics/Calculations.html", calculations)
+
 

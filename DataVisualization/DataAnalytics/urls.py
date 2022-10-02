@@ -4,7 +4,6 @@ from . import views
 urlpatterns = [
     # Adding path to url 
     # allow user to search for position in sql database
-    path('NetIncome/<int:id>', views.netIncome, name = "netIncome"),
-    path('customer/<int:id>', views.customer, name = "Customer Aquisition"),
+    path('Calculations/<int:id>', views.Calculations, name = "Calculations"),
     path('', views.home, name = "home")
 ]
