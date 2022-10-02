@@ -21,6 +21,12 @@ def Calculations(response, id):
     calculations["netCalculationFormula"] = netCalculationFormula
     calculations["customerAquisitionGet"] = customerAquisitionGet.marketing, customerAquisitionGet.newCustomer
     calculations["customerFormula"] = customerFormula
-    return render(response, "DataAnalytics/Calculations.html", calculations)
+    return render(response, "DataAnalytics/calculations.html", calculations)
 
+def login(response):
+    
+    return render(response, "DataAnalytics/login.html")
+
+def contact(response):
+    return render(response, "DataAnalytics/contact.html")
 

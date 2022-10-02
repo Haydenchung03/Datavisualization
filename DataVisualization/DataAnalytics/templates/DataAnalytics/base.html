@@ -1,16 +1,64 @@
 <html>
 <head>
     <title>{% block title %}Data Analytics Website{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    
+    <link rel="stylesheet" href="{% static 'style.css'%}">
 <head>
 
 <body>
+    <!--
+    <a href = "http://127.0.0.1:8000/">Home Page</a>
+    <a href = "http://127.0.0.1:8000/Calculations/1">Calculations page</a>
+    <a href = "http://127.0.0.1:8000/Login">Login</a>
+    -->
+    <!--- Navbar-->
+    <nav class = "navbar navbar-expand-md navbar-light">
+        <div class = "container-xxl">
+            <a href = "http://127.0.0.1:8000/" class = "navbar-brand">
+                <span class = "fw-bold" text-secondary>
+                    PureData4U
+                </span>
+            </a>
+
+            <!--Toggle for Navbar on mobile-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!--Links-->
+            <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
+                <ul class = "navbar-nav">
+                    <li class = "nav-item">
+                        <a class = "nav-link" href = "http://127.0.0.1:8000/"> Home </a>
+                    </li>
+
+                    <li class = "nav-item">
+                        <a class = "nav-link" href = "http://127.0.0.1:8000/calculations/1"> Calculations </a>
+                    </li>
+
+                    <li class = "nav-item">
+                        <a class = "nav-link" href = "http://127.0.0.1:8000/login"> Login </a>
+                    </li>
+
+                    <li class = "nav-item">
+                        <a class = "nav-link" href = "http://127.0.0.1:8000/contact"> Contact </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div id = "content", name = "content">
-        <a href = "http://127.0.0.1:8000/">Home Page</p>
-        <a href = "http://127.0.0.1:8000/Calculations/1">Calculations page</a>
+        
         {% block content %}
             
         {% endblock %}
     </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
 <body>
 </html>
