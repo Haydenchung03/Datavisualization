@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import customerAquisition, netProfit
+from django.core.mail import send_mail
+from django.conf import settings
+
 # Create your views here.
 
 def home(response):
@@ -23,10 +26,19 @@ def Calculations(response, id):
     calculations["customerFormula"] = customerFormula
     return render(response, "DataAnalytics/calculations.html", calculations)
 
-def login(response):
+def login(request):
     
-    return render(response, "DataAnalytics/login.html")
 
-def contact(response):
-    return render(response, "DataAnalytics/contact.html")
+    return render(request, "DataAnalytics/login.html")
+
+def contact(request):
+    if request.method == 'POST':
+        subject = request.POST.get('subject')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        recipient_list = email;
+        subject1 = "Subject: " + subject + "\nMessage: "+ message
+        send_mail(email, subject1, recipient_list, [settings.EMAIL_HOST_USER], fail_silently=True)
+        return render(request, "DataAnalytics/confirmation.html", {'email': email})
+    return render(request, "DataAnalytics/contact.html", {})
 

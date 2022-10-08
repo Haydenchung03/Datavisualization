@@ -3,10 +3,12 @@
     background: linear-gradient(90deg, rgba(255,255,255,1) 56%, rgba(0,255,251,1) 100%);
 }
 
-a {
-    color: orange;
-    margin-right: 10px;
-    
+.nav-link {
+    margin-right: 30px;
+}
+
+.changeit {
+    color: blue;
 }
 
 

@@ -23,3 +23,5 @@ class customerAquisition(models.Model):
     def __float__(self):
         # return cost of customer aquisition
         return (self.marketing / self.newCustomer)
+
+
