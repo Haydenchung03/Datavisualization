@@ -18,10 +18,15 @@ class customerAquisition(models.Model):
 
     #Example customer aquisition
     marketing = models.FloatField()
-    newCustomer = models.IntegerField();
+    newCustomer = models.IntegerField()
 
     def __float__(self):
         # return cost of customer aquisition
         return (self.marketing / self.newCustomer)
 
+class netProfitMargin(models.Model):
+    profit = models.FloatField()
+    sales = models.FloatField()
 
+    def __float__(self):
+        return (self.profit / self.sales) * 100

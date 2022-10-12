@@ -6,6 +6,33 @@
 
 {% block content %}
     <h1 class = "display-6 lead text-center">Calculations</h1>
-    <p class = "lead">This is the net profit: {{netCalculationFormula}} given these values {{netCalculationGet}} </p>
-    <p class = "lead text-end">This is the customer aquisition costs: {{customerFormula}} given these values {{customerAquisitionGet}} </p>
+    <form method = "POST">
+        {% csrf_token %}
+        <h4>Enter Profit</h4>
+        <div class="input-group mb-3">
+            <span class="input-group-text">$</span>
+            <span class="input-group-text">0.00</span>
+            <input type="float" class="form-control" name = "profit" placeholder = "xx.xx" aria-label="Dollar amount (with dot and two decimal places)">
+        </div>
+        <h4>Enter Total Sales</h4>
+        <div class="input-group">
+        
+        <span class="input-group-text">$</span>
+        <span class="input-group-text">0.00</span>
+        <input type="float" class="form-control" name = "sales" placeholder = "xx.xx" aria-label="Dollar amount (with dot and two decimal places)">
+        </div>
+        <br>
+        <button type = "submit" class = "btn btn-primary">Submit</button>
+        <br>
+        {%for key, values in calculations.items %}
+            <br>
+            {%if key == "Error" %}
+                {{key}}: Probably invalid input
+            {% elif key == "Profit: " or key == "Sales: " %}
+                {{key}} ${{values}}
+            {% else %}
+                {{key}} {{values}}%
+            {% endif %}
+        {% endfor %}
+    </form>
 {% endblock %}
