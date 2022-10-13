@@ -30,10 +30,12 @@ def Calculations(request):
             sales = float(sales)
             save1.profit = profit
             save1.sales = sales;
+            netProfitMarginCalculation = (profit / sales) * 100
+            save1.profitMargin1 = netProfitMarginCalculation
             save1.save()
 
             # profit = 100000 sales = 1000000 | sales / profit * 100 = margin of 10%
-            netProfitMarginCalculation = (profit / sales) * 100
+            
             
             calculations["Profit: "] = float(str((round(profit, 2))))
             calculations["Sales: "] = float(str((round(sales, 2))))
@@ -51,8 +53,9 @@ def contact(request):
         subject = request.POST.get('subject')
         email = request.POST.get('email')
         message = request.POST.get('message')
+        name = request.POST.get('name')
         recipient_list = email;
-        subject1 = "Subject: " + subject + "\nMessage: "+ message
+        subject1 = "Name: " + name + "\nSubject: " + subject + "\nMessage: "+ message
         send_mail(email, subject1, recipient_list, [settings.EMAIL_HOST_USER], fail_silently=True)
         return render(request, "DataAnalytics/confirmation.html", {'email': email})
     return render(request, "DataAnalytics/contact.html", {})

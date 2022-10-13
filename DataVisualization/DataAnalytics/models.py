@@ -27,6 +27,10 @@ class customerAquisition(models.Model):
 class netProfitMargin(models.Model):
     profit = models.FloatField()
     sales = models.FloatField()
-
-    def __float__(self):
-        return (self.profit / self.sales) * 100
+    
+    profitMargin1 = models.FloatField()
+    @property
+    def profitMargin(self):
+        if(self.profit != None and self.sales != None):
+            profitMargin1 = (self.profit / self.sales) * 100
+            return profitMargin1
