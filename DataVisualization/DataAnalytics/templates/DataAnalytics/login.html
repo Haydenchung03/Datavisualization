@@ -5,6 +5,9 @@
 {% block title%}
     Login
 {% endblock %}
+{% load static %}
+    
+<link rel="stylesheet" href="{% static 'style.css'%}" type = "text/css">
 {% block content%}
     <form method = "POST">
         {% csrf_token %}

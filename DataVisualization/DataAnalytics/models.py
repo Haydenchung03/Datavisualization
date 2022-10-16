@@ -34,3 +34,16 @@ class netProfitMargin(models.Model):
         if(self.profit != None and self.sales != None):
             profitMargin1 = (self.profit / self.sales) * 100
             return profitMargin1
+
+
+class priceOptimization(models.Model):
+    priceSell = models.FloatField()
+    costMake = models.FloatField()
+    quantity = models.IntegerField()
+
+    maxProfit = models.FloatField()
+    @property
+    def idealCost(self):
+        if(self.priceSell != None and self.costMake != None and self.quantity != None):
+            maxProfit = (self.priceSell - self.costMake) * (self.quantity)
+            return maxProfit 

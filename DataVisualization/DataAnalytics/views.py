@@ -19,31 +19,32 @@ def Calculations(request):
     # gets net income
     calculations = {}
     if request.method == 'POST':
-        
-        profit = request.POST.get('profit')
-        sales = request.POST.get('sales')
-        try:
-            # saves inputs in database and converts inputs to floats
-            save1 = netProfitMargin()
+        if 'profit' in request.POST and 'sales' in request.POST:
 
-            profit = float(profit)
-            sales = float(sales)
-            save1.profit = profit
-            save1.sales = sales;
-            netProfitMarginCalculation = (profit / sales) * 100
-            save1.profitMargin1 = netProfitMarginCalculation
-            save1.save()
+            profit = request.POST.get('profit')
+            sales = request.POST.get('sales')
+            try:
+                # saves inputs in database and converts inputs to floats
+                save1 = netProfitMargin()
 
-            # profit = 100000 sales = 1000000 | sales / profit * 100 = margin of 10%
-            
-            
-            calculations["Profit: "] = float(str((round(profit, 2))))
-            calculations["Sales: "] = float(str((round(sales, 2))))
-            calculations["Net Margin: "] = float(str((round(netProfitMarginCalculation, 2))))
-            return render(request, "DataAnalytics/calculations.html", {'calculations': calculations})
-        except ValueError:
-            calculations["Error"] = "";
-            return render(request, "DataAnalytics/calculations.html", {'calculations': calculations})
+                profit = float(profit)
+                sales = float(sales)
+                save1.profit = profit
+                save1.sales = sales;
+                netProfitMarginCalculation = (profit / sales) * 100
+                save1.profitMargin1 = netProfitMarginCalculation
+                save1.save()
+
+                # profit = 100000 sales = 1000000 | sales / profit * 100 = margin of 10%
+                
+                
+                calculations["Profit: "] = float(str((round(profit, 2))))
+                calculations["Sales: "] = float(str((round(sales, 2))))
+                calculations["Net Margin: "] = float(str((round(netProfitMarginCalculation, 2))))
+                return render(request, "DataAnalytics/calculations.html", {'calculations': calculations})
+            except ValueError:
+                calculations["Error"] = "";
+                return render(request, "DataAnalytics/calculations.html", {'calculations': calculations})
         
     else:
         return render(request, "DataAnalytics/calculations.html")

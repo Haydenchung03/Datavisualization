@@ -1,0 +1,12 @@
+.card-body {
+    background-color: rgba(0,255,251,1);
+}
+
+.card-header {
+    background-color: rgba(0,255,251,1);
+}
+
+.input-group-text {
+    color: white;
+    background-color: black;
+}
