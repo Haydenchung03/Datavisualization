@@ -8,12 +8,12 @@
 
 {% block content %}
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'calculations.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'calculations.css' %}?{% now "U" %}">
     <h1 class = "display-6 lead text-center" >Calculations</h1>  
-    <div class="card text-bg-info mb-3" style="max-width: 25rem;">
+    <div class="card text-bg-info mb-3">
         <div class="card-header">Calculate Margins</div>
         <div class="card-body">
-            <form method = "POST" name = "netProfit1">
+            <form method = "POST">
                 {% csrf_token %}
                 <h4>Enter Profit</h4>
                 <div class="input-group mb-3">
@@ -30,18 +30,48 @@
                 <br>
                 <button type = "Submit" class = "btn btn-primary">Submit</button>
                 <br>
-                {%for key, values in calculations.items %}
-                    <br>
-                    {%if key == "Error" %}
-                        {{key}}: Probably invalid input
-                    {% elif key == "Profit: " or key == "Sales: " %}
-                        {{key}} ${{values}}
-                    {% else %}
-                        {{key}} {{values}}%
-                    {% endif %}
-                {% endfor %}
             </form>
         </div>
     </div>
+    <div class="card card1 text-bg-info mb-3">
+        <div class="card-header">Optimal Product Cost</div>
+        <div class="card-body">
+            <form method = "POST">
+                {% csrf_token %}
+                <h4>Enter Price Of Good</h4>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    
+                    <input type="float" class="form-control" name = "profit" placeholder = "xx.xx" aria-label="Dollar amount (with dot and two decimal places)">
+                </div>
+                <h4>Enter Cost Of Good</h4>
+                <div class="input-group">
+                
+                <span class="input-group-text">$</span>
+                <input type="float" class="form-control" name = "sales" placeholder = "xx.xx" aria-label="Dollar amount (with dot and two decimal places)">
+                </div>
+                <br>
+                <h4>Enter Quantity Of Good</h4>
+                <div class="input-group">
+                
+                <span class="input-group-text">$</span>
+                <input type="float" class="form-control" name = "sales" placeholder = "xx.xx" aria-label="Dollar amount (with dot and two decimal places)">
+                </div>
+                <br>
+                <button type = "Submit" class = "btn btn-primary">Submit</button>
+                <br>
+            </form>
+        </div>
+    </div>
+    {%for key, values in calculations.items %}
+    <br>
+    {%if key == "Error" %}
+        {{key}}: Probably invalid input
+    {% elif key == "Profit: " or key == "Sales: " %}
+        {{key}} ${{values}}
+    {% else %}
+        {{key}} {{values}}%
+    {% endif %}
+{% endfor %}
     
 {% endblock %}

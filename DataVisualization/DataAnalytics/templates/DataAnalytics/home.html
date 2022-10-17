@@ -5,6 +5,24 @@
 {% endblock%}
 
 {% block content %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}?{% now "U" %}">
+    <h2 class = "display-6 lead text-center">Home page</h2>
+    <div class = "pieChart">
+        {% autoescape off %}
+        {{context}}
+        {% endautoescape %}
+    </div>
     
-    <h1 class = "display-6 lead text-center">Home page</h1>
+    <div class = "textSpeed">
+        <h4>
+        Do not let your data go to waste! About 97% of business let their data go to waste! 
+        But why is that so? The truth is many companies don't know how to utilize their data
+        to tell a truth and a story. Data that is not propertly sorted or used in the right 
+        context is hard to build business decisions and strategies around. That is where we 
+        come in! With many software solutions out there for businesses, one glaring pattern
+        is the amount of them that is paid. We strive to offer a high quality solution at no 
+        cost! So try our data solution and we promise to offer a solution for your business! 
+        </h4>
+    </div>
 {% endblock %}

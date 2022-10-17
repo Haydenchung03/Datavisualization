@@ -1,5 +1,6 @@
 .card-body {
     background-color: rgba(0,255,251,1);
+    
 }
 
 .card-header {
@@ -9,4 +10,14 @@
 .input-group-text {
     color: white;
     background-color: black;
+}
+
+.card {
+    max-width: 25rem;
+}
+.card1 {
+    max-width: 25rem;
+    margin-left: 425px;
+   
+    margin-top: -335px;
 }
