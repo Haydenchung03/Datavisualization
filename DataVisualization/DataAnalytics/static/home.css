@@ -10,3 +10,11 @@
     margin-left: 600px;
     
 }
+h1, h2, h3, h4, h5, h6 {
+    color: white;
+}
+
+body {
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, #2d545e 56%, black 100%);
+}

@@ -57,9 +57,8 @@ def Calculations(request):
 
                 # profit = 100000 sales = 1000000 | sales / profit * 100 = margin of 10%
                 
-                
+                calculations["Total Sales: "] = float(str((round(sales, 2))))
                 calculations["Profit: "] = float(str((round(profit, 2))))
-                calculations["Sales: "] = float(str((round(sales, 2))))
                 calculations["Net Margin: "] = float(str((round(netProfitMarginCalculation, 2))))
                 return render(request, "DataAnalytics/calculations.html", {'calculations': calculations})
             except ValueError:

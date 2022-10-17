@@ -7,6 +7,11 @@
     background-color: rgba(0,255,251,1);
 }
 
+body {
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, #2d545e 56%, black 100%);
+}
+
 .input-group-text {
     color: white;
     background-color: black;
@@ -15,9 +20,16 @@
 .card {
     max-width: 25rem;
 }
+
 .card1 {
     max-width: 25rem;
+    margin-left: 1000px;
+    margin-top: 50px;
+}
+
+.marginText {
+    margin-top: -300px;
     margin-left: 425px;
-   
-    margin-top: -335px;
+    position: static;
+    color: white;
 }

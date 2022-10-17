@@ -9,30 +9,54 @@
 {% block content %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'calculations.css' %}?{% now "U" %}">
-    <h1 class = "display-6 lead text-center" >Calculations</h1>  
+    <h1 class = "display-6 lead text-center" style = "color: white" >Calculations</h1>  
     <div class="card text-bg-info mb-3">
         <div class="card-header">Calculate Margins</div>
         <div class="card-body">
             <form method = "POST">
                 {% csrf_token %}
-                <h4>Enter Profit</h4>
+                <h4>Enter Total Sales</h4>
                 <div class="input-group mb-3">
                     <span class="input-group-text">$</span>
                     
-                    <input type="float" class="form-control" name = "profit" placeholder = "xx.xx" aria-label="Dollar amount (with dot and two decimal places)">
+                    <input type="float" class="form-control" name = "sales" placeholder = "xx.xx" aria-label="Dollar amount (with dot and two decimal places)">
                 </div>
-                <h4>Enter Total Sales</h4>
+                <h4>Enter Profit</h4>
                 <div class="input-group">
                 
                 <span class="input-group-text">$</span>
-                <input type="float" class="form-control" name = "sales" placeholder = "xx.xx" aria-label="Dollar amount (with dot and two decimal places)">
+                <input type="float" class="form-control" name = "profit" placeholder = "xx.xx" aria-label="Dollar amount (with dot and two decimal places)">
                 </div>
                 <br>
                 <button type = "Submit" class = "btn btn-primary">Submit</button>
                 <br>
+                {%for key, values in calculations.items %}
+                <br>
+                {%if key == "Error" %}
+                    {{key}}: Probably invalid input
+                {% elif key == "Profit: " or key == "Total Sales: " %}
+                    {{key}} ${{values}}
+                {% else %}
+                    {{key}} {{values}}%
+                {% endif %}
+                {% endfor %}
             </form>
         </div>
     </div>
+    <div class = "marginText">
+        <h3>
+            At the core of every business, there needs to be profit margins when selling 
+            a product. This is where this comes in hand. Whether or not you are a new business
+            starting out or a long time business with lots of sales, this calculator can be
+            used to calculate how much you are really making per sale. You would first want to 
+            enter in your total sales and after expenses have been taken into account, enter in 
+            the profit which would be (total sales - expenses) which would equate to your profits.
+            Enter those two values in and you get your net margin or approximately how much you make
+            per sale!
+        </h3>
+    </div>
+    <br>
+
     <div class="card card1 text-bg-info mb-3">
         <div class="card-header">Optimal Product Cost</div>
         <div class="card-body">
@@ -63,15 +87,5 @@
             </form>
         </div>
     </div>
-    {%for key, values in calculations.items %}
-    <br>
-    {%if key == "Error" %}
-        {{key}}: Probably invalid input
-    {% elif key == "Profit: " or key == "Sales: " %}
-        {{key}} ${{values}}
-    {% else %}
-        {{key}} {{values}}%
-    {% endif %}
-{% endfor %}
     
 {% endblock %}
