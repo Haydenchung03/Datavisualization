@@ -20,7 +20,7 @@ def home(response):
     values = [3, 97]
     config = {'displayModeBar': False}
     # pull is given as a fraction of the pie radius
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values, pull=[0.1, 0])])
+    fig = go.Figure(data=[go.Pie(labels=labels, values=values, pull=[0.2, 0])])
     fig.update(layout_showlegend = False)
     fig.update_traces(hoverinfo = 'label+percent', textinfo = 'none')
     fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
