@@ -30,6 +30,7 @@
                 <br>
                 <button type = "Submit" class = "btn btn-primary">Submit</button>
                 <br>
+                
                 {%for key, values in calculations.items %}
                 <br>
                 {%if key == "Error" %}
@@ -41,7 +42,9 @@
                 {% endif %}
                 {% endfor %}
             </form>
+            
         </div>
+        
     </div>
     <div class = "marginText">
         <h3>
@@ -55,7 +58,6 @@
             per sale!
         </h3>
     </div>
-    <br>
 
     <div class="card card1 text-bg-info mb-3">
         <div class="card-header">Optimal Product Cost</div>

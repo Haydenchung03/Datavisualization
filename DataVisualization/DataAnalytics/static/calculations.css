@@ -24,12 +24,12 @@ body {
 .card1 {
     max-width: 25rem;
     margin-left: 1000px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .marginText {
-    margin-top: -300px;
+    margin-top: -325px;
     margin-left: 425px;
-    position: static;
+    position: absolute;
     color: white;
 }
